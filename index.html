@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Javascript 2D Graphics Engine</title>
+    <script type="text/javascript" src="J2D/J2D.js"></script>
+    <style type="text/css">
+        canvas {
+            border: 1px dotted #888888;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var renderer = new J2D.Renderer(300, 300),
+            stage = new J2D.Stage();
+        
+        document.body.appendChild(renderer.view);
+        
+        var pointA = new J2D.Primitives.Point(50, 50),
+            pointB = new J2D.Primitives.Point(10, 80),
+            pointC = new J2D.Primitives.Point(75, 100),
+            pointD = new J2D.Primitives.Point(150, 150),
+            pointE = new J2D.Primitives.Point(75, 100);
+        
+        var triangle = new J2D.Graphics.Triangle(pointA, pointB, pointC);
+        var square = new J2D.Graphics.Square(pointD, 100);
+        var square2 = new J2D.Graphics.Square(pointE, 100);
+        
+        stage.AddToStage(triangle);        
+        stage.AddToStage(square);
+        stage.AddToStage(square2); 
+        
+        function draw() {
+            square.Rotate(1);
+            triangle.Rotate(1);
+            renderer.Render(stage);
+            window.requestAnimationFrame(draw);
+        }
+        
+        window.requestAnimationFrame(draw);
+        
+        
+    </script>
+</body>
+
+</html>
